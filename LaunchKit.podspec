@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "LaunchKit"
-  s.version          = "2.1.0"
+  s.version          = "2.1.1"
   s.summary          = "Useful tools you need to launch your app."
   s.description      = <<-DESC
                        We provide tools for launching your app like
@@ -13,7 +13,9 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/LaunchKit/launchkit-ios.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/launchkit'
 
-  s.platform     = { :ios => "7.0", :tvos => "9.0" }
+  s.ios.deployment_target = '7.0'
+  s.tvos.deployment_target = '9.0'
+
   s.requires_arc = true
 
   s.default_subspec = 'LaunchKit'
