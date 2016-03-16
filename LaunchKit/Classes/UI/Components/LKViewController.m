@@ -185,6 +185,7 @@
             // in form submission
             continue;
         }
+#if !TARGET_OS_TV
         if ([formElement isKindOfClass:[UISwitch class]]) {
             UISwitch *switchElement = (UISwitch *)formElement;
             //NSLog(@"Switch: %@", switchElement.isOn ? @"ON" : @"OFF");
@@ -198,6 +199,7 @@
             //NSLog(@"Textview: %@", textView.text);
             form[formId] = textView.text;
         }
+#endif
     }
 
     NSLog(@"Dictionary from form:\n%@", form);
@@ -296,8 +298,10 @@
 
 - (void)setStatusBarShouldHide:(BOOL)statusBarShouldHide
 {
+#if !TARGET_OS_TV
     _statusBarShouldHide = statusBarShouldHide;
     [self setNeedsStatusBarAppearanceUpdate];
+#endif
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -307,8 +311,10 @@
 
 - (void)setStatusBarStyleValue:(NSInteger)statusBarStyleValue
 {
+#if !TARGET_OS_TV
     _statusBarStyleValue = statusBarStyleValue;
     [self setNeedsStatusBarAppearanceUpdate];
+#endif
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

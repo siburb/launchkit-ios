@@ -295,7 +295,7 @@ static NSUInteger const RECORDED_TAPS_BUFFER_SIZE = 200;
 
     CGPoint touchPoint = [recognizer locationInView:nil];
     CGRect frame = recognizer.view.bounds;
-
+#if !TARGET_OS_TV
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     if (![UIViewController instancesRespondToSelector:@selector(traitCollection)]) {
         // iOS 7 and below...
@@ -337,6 +337,7 @@ static NSUInteger const RECORDED_TAPS_BUFFER_SIZE = 200;
         touchPoint.x += offsetX;
 #endif
     }
+#endif
     if (self.verboseLogging) {
         LKLog(@"Tapped %@ within %@", NSStringFromCGPoint(touchPoint), NSStringFromCGRect(frame));
     }
@@ -484,7 +485,7 @@ static NSUInteger const RECORDED_TAPS_BUFFER_SIZE = 200;
 
 
 #pragma mark - Convenience Methods
-
+#if !TARGET_OS_TV
 // Thanks, Mixpanel
 + (double)angleForInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
@@ -522,5 +523,6 @@ static NSUInteger const RECORDED_TAPS_BUFFER_SIZE = 200;
 #endif
     return transformedFrame;
 }
+#endif
 
 @end

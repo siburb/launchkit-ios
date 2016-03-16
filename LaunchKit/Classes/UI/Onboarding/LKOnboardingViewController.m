@@ -224,7 +224,9 @@
     self.remoteOnboardingViewController.flowDelegate = self;
     UIView *remoteView = self.remoteOnboardingViewController.view;
     [self.view addSubview:remoteView];
+#if !TARGET_OS_TV
     [self setNeedsStatusBarAppearanceUpdate];
+#endif
 }
 
 
